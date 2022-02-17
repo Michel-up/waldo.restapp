@@ -51,9 +51,9 @@ table 79911 "REST Log WLD"
         {
             Caption = 'Date Time Created';
         }
-        field(12; Duraction; Duration)
+        field(12; "Duration"; Duration)
         {
-            Caption = 'Duraction';
+            Caption = 'Duration';
         }
         field(20; User; Text[50])
         {

@@ -102,29 +102,28 @@ codeunit 79911 "REST Helper WLD"
         ResponseBlob.BLOB.CreateInStream(ResponseInstr);
         WebResponse.Content().ReadAs(ResponseInstr);
 
-        with RESTLog do begin
-            Init();
-            RequestUrl := copystr(WebRequest.GetRequestUri(), 1, MaxStrLen(RequestUrl));
-            RequestMethod := copystr(WebRequest.Method(), 1, MaxStrLen(RequestMethod));
+        RESTLog.Init();
+        RESTLog.RequestUrl := copystr(WebRequest.GetRequestUri(), 1, MaxStrLen(RESTLog.RequestUrl));
+        RESTLog.RequestMethod := copystr(WebRequest.Method(), 1, MaxStrLen(RESTLog.RequestMethod));
 
-            RequestBody.CreateOutStream(Outstr);
-            CopyStream(Outstr, Instr);
+        RESTLog.RequestBody.CreateOutStream(Outstr);
+        CopyStream(Outstr, Instr);
 
-            RequestBodySize := RequestBody.Length();
-            ContentType := copystr(CurrentContentType, 1, MaxStrLen(ContentType));
-            RequestHeaders := copystr(RestHeaders.ToText(), 1, MaxStrLen(RequestHeaders));
-            ResponseHttpStatusCode := GetHttpStatusCode();
+        RESTLog.RequestBodySize := RESTLog.RequestBody.Length();
+        RESTLog.ContentType := copystr(CurrentContentType, 1, MaxStrLen(RESTLog.ContentType));
+        RESTLog.RequestHeaders := copystr(RestHeaders.ToText(), 1, MaxStrLen(RESTLog.RequestHeaders));
+        RESTLog.ResponseHttpStatusCode := GetHttpStatusCode();
 
-            Response.CreateOutStream(Outstr);
-            CopyStream(Outstr, ResponseInstr);
-            ResponseSize := Response.Length();
-            DateTimeCreated := StartDateTime;
+        RESTLog.Response.CreateOutStream(Outstr);
+        CopyStream(Outstr, ResponseInstr);
+        RESTLog.ResponseSize := RESTLog.Response.Length();
+        RESTLog.DateTimeCreated := StartDateTime;
 
-            User := copystr(userid(), 1, MaxStrLen(User));
+        RESTLog.User := copystr(userid(), 1, MaxStrLen(RESTLog.User));
 
-            Duraction := TotalDuration;
-            Insert();
-        end;
+        RESTLog."Duration" := TotalDuration;
+        RESTLog.Insert();
+
     end;
 
     [IntegrationEvent(true, false)]

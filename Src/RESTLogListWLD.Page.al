@@ -39,9 +39,9 @@ page 79911 "REST Log List WLD"
                     Tooltip = 'Specifies the DateTimeCreated';
                     ApplicationArea = All;
                 }
-                field(Duraction; Duraction)
+                field("Duration"; Duration)
                 {
-                    Tooltip = 'Specifies the Duraction';
+                    Tooltip = 'Specifies the Duration';
                     ApplicationArea = All;
                 }
                 field(RequestBodySize; RequestBodySize)

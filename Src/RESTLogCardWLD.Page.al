@@ -31,9 +31,9 @@ page 79910 "REST Log Card WLD"
                     Tooltip = 'Specifies the DateTimeCreated';
                     ApplicationArea = All;
                 }
-                field(Duraction; Duraction)
+                field("Duration"; Duration)
                 {
-                    Tooltip = 'Specifies the Duraction';
+                    Tooltip = 'Specifies the Duration';
                     ApplicationArea = All;
                 }
                 field(User; User)
